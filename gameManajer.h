@@ -2,88 +2,36 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#pragma once
 #include "board.h"
 #include "player.h"
+#include "boardGenerator.h" 
 using namespace std;
+
+
 
 class GameManager {
 private:
     Board board;
     Player player;
+    BoardGenerator boardGenerator; // Tambahkan objek BoardGenerator
 
 public:
     GameManager(const string& playerName);
-    bool isNumberUsedInRow(int row, int num) const;
-    bool isNumberUsedInCol(int col, int num) const;
-    void generateSudokuPuzzle();
     void printBoard() const;
     void play();
 };
 
 
 GameManager::GameManager(const string& playerName) : player(playerName) {
-    srand(time(NULL));
-    generateSudokuPuzzle();
-}
-
-bool GameManager::isNumberUsedInRow(int row, int num) const {
-    for (int col = 0; col < 9; ++col) {
-        if (board.getCell(row, col) == num) {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool GameManager::isNumberUsedInCol(int col, int num) const {
-    for (int row = 0; row < 9; ++row) {
-        if (board.getCell(row, col) == num) {
-            return true;
-        }
-    }
-    return false;
-}
-
-void GameManager::generateSudokuPuzzle() {
-    
-    bool usedInRow[9][10] = {false};
-    bool usedInCol[9][10] = {false};
-    bool usedInGrid[3][3][10] = {false};
-
-    int numToPlace = 1; 
-
-    for (int i = 0; i < 79; ++i) {
-        int row = i / 9; 
-        int col = i % 9; 
-        int gridRow = row / 3; 
-        int gridCol = col / 3; 
-        
-       
-        while (usedInRow[row][numToPlace] || usedInCol[col][numToPlace] || usedInGrid[gridRow][gridCol][numToPlace]) {
-            ++numToPlace; 
-            if (numToPlace > 9)
-                numToPlace = 1;
-        }
-        
-       
-        usedInRow[row][numToPlace] = true;
-        usedInCol[col][numToPlace] = true;
-        usedInGrid[gridRow][gridCol][numToPlace] = true;
-
-       
-        board.setCell(row, col, numToPlace, true);
-
-       
-        ++numToPlace;
-        if (numToPlace > 9) 
-            numToPlace = 1;
-    }
+    boardGenerator.generateSudokuPuzzle(board); // Panggil generateSudokuPuzzle dari objek BoardGenerator
 }
 
 void GameManager::printBoard() const {
     cout << "Sudoku Puzzle:" << endl;
     board.printBoard();
 }
+
 
 void GameManager::play() {
     cout << "Selamat datang, " << player.getName() << "!" << endl;
