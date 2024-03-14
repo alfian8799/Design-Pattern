@@ -5,7 +5,6 @@
 #include <vector>
 using namespace std;
 
-
 class Board {
 private:
     vector<vector<int>> cells;
@@ -19,7 +18,6 @@ public:
     bool isCellFixed(int row, int col) const;
     void printBoard() const;
 };
-
 
 Board::Board() {
     cells = vector<vector<int>>(9, vector<int>(9, 0));
@@ -40,26 +38,26 @@ bool Board::isCellFixed(int row, int col) const {
 }
 
 void Board::printBoard() const {
-    std::cout << "   1 2 3   4 5 6   7 8 9" << std::endl;
-    std::cout << " +-----------------------+" << std::endl;
+    cout << "   1 2 3   4 5 6   7 8 9" << endl;
+    cout << " +-----------------------+" << endl;
 
     for (int i = 0; i < 9; ++i) {
-        std::cout << char('A' + i) << "| ";
+        cout << char('A' + i) << "| ";
         if (i % 3 == 0 && i != 0) {
-            std::cout << "---------------------" << std::endl;
-            std::cout << " | ";
+            cout << "---------------------" << endl;
+            cout << " | ";
         }
         for (int j = 0; j < 9; ++j) {
             if (j % 3 == 0 && j != 0) {
-                std::cout << "| ";
+                cout << "| ";
             }
             if (isCellFixed(i, j)) {
-                std::cout << "\033[1;31m" << cells[i][j] << "\033[0m ";
+                cout << "\033[1;31m" << cells[i][j] << "\033[0m ";
             } else {
-                std::cout << cells[i][j] << " ";
+                cout << cells[i][j] << " ";
             }
         }
-        std::cout << std::endl;
+        cout << endl;
     }
-    std::cout << " +-----------------------+" << std::endl;
+    cout << " +-----------------------+" << endl;
 }
