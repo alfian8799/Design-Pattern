@@ -14,8 +14,7 @@ class GameManager {
 private:
     Board board;
     Player player;
-    BoardGenerator boardGenerator; // Tambahkan objek BoardGenerator
-
+    BoardGenerator boardGenerator; 
 public:
     GameManager(const string& playerName);
     void printBoard() const;
@@ -24,7 +23,7 @@ public:
 
 
 GameManager::GameManager(const string& playerName) : player(playerName) {
-    boardGenerator.generateSudokuPuzzle(board); // Panggil generateSudokuPuzzle dari objek BoardGenerator
+    boardGenerator.generateSudokuPuzzle(board); 
 }
 
 void GameManager::printBoard() const {

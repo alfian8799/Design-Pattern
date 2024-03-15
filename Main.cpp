@@ -4,6 +4,7 @@
 #include <ctime>
 #include <string>
 #include "gameManajer.h"
+
 using namespace std;
 
 int main() {
@@ -14,6 +15,7 @@ int main() {
 
     GameManager game(playerName); // Mulai permainan
     game.play();
+
 
     return 0;
 }

@@ -1,10 +1,18 @@
 #include "board.h" 
-#pragma once// Sesuaikan dengan path yang benar jika diperlukan
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+#include <string>
+#pragma once
 
 class BoardGenerator {
 public:
     static void generateSudokuPuzzle(Board& board);
 };
+
+
+const int NUM_INITIAL_CELLS = 78;
 
 void BoardGenerator::generateSudokuPuzzle(Board& board) {
     bool usedInRow[9][10] = {false};
@@ -13,7 +21,7 @@ void BoardGenerator::generateSudokuPuzzle(Board& board) {
 
     int numToPlace = 1;
 
-    for (int i = 0; i < 79; ++i) {
+    for (int i = 0; i < NUM_INITIAL_CELLS; ++i) {
         int row = i / 9;
         int col = i % 9;
         int gridRow = row / 3;
