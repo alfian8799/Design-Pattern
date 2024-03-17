@@ -12,7 +12,7 @@ public:
 };
 
 
-const int NUM_INITIAL_CELLS = 78;
+const int numInitialCells = 78;
 
 void BoardGenerator::generateSudokuPuzzle(Board& board) {
     bool usedInRow[9][10] = {false};
@@ -21,7 +21,7 @@ void BoardGenerator::generateSudokuPuzzle(Board& board) {
 
     int numToPlace = 1;
 
-    for (int i = 0; i < NUM_INITIAL_CELLS; ++i) {
+    for (int i = 0; i < numInitialCells; ++i) {
         int row = i / 9;
         int col = i % 9;
         int gridRow = row / 3;
