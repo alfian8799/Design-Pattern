@@ -2,13 +2,12 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
-#pragma once
+#include <string>
 #include "board.h"
 #include "player.h"
 #include "boardGenerator.h" 
+
 using namespace std;
-
-
 
 class GameManager {
 private:
@@ -19,8 +18,8 @@ public:
     GameManager(const string& playerName);
     void printBoard() const;
     void play();
+    bool checkWinCondition() const;
 };
-
 
 GameManager::GameManager(const string& playerName) : player(playerName) {
     boardGenerator.generateSudokuPuzzle(board); 
@@ -31,6 +30,16 @@ void GameManager::printBoard() const {
     board.printBoard();
 }
 
+bool GameManager::checkWinCondition() const {
+    for (int i = 0; i < 9; ++i) {
+        for (int j = 0; j < 9; ++j) {
+            if (board.getCell(i, j) == 0) {
+                return false; // Ada sel kosong, permainan belum selesai
+            }
+        }
+    }
+    return true; // Semua sel terisi, permainan selesai
+}
 
 void GameManager::play() {
     cout << "Selamat datang, " << player.getName() << "!" << endl;
@@ -65,6 +74,12 @@ void GameManager::play() {
         }
 
         board.setCell(row, col, value);
+
         printBoard();
+
+        if (checkWinCondition()) {
+            cout << "Selamat! Anda telah menyelesaikan permainan Sudoku." << endl;
+            break;
+        }
     }
 }
