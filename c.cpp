@@ -1,107 +1,128 @@
-#include <iostream>
-#include <vector>
-#include <cstdlib>
-#include <ctime>
-#include <algorithm>
 
-class Sudoku {
-private:
-    std::vector<std::vector<int>> board;
-    const int size = 9;
 
-    bool isValid(int row, int col, int num) {
-        // Check row and column
-        for (int i = 0; i < size; ++i) {
-            if (board[row][i] == num || board[i][col] == num) {
-                return false;
-            }
-        }
+// #include "board.h" 
+// #include <iostream>
+// #include <vector>
+// #include <cstdlib>
+// #include <ctime>
+// #include <string>
+// #pragma once
 
-        // Check 3x3 grid
-        int startRow = row - row % 3;
-        int startCol = col - col % 3;
-        for (int i = startRow; i < startRow + 3; ++i) {
-            for (int j = startCol; j < startCol + 3; ++j) {
-                if (board[i][j] == num) {
-                    return false;
-                }
-            }
-        }
+// class BoardGenerator {
+// public:
+//     static void generateSudokuPuzzle(Board& board);
+// };
 
-        return true;
-    }
+// void BoardGenerator::generateSudokuPuzzle(Board& board) {
+    
+//     int sudokuNumbers[9][9] = {
+//         {4, 0, 2, 0, 0, 0, 0, 0, 9},
+//         {0, 9, 6, 0, 0, 0, 0, 0, 0},
+//         {0, 0, 0, 0, 0, 0, 0, 1, 0},
+//         {0, 0, 7, 4, 7, 0, 0, 8, 3},
+//         {0, 6, 0, 0, 0, 0, 0, 0, 4},
+//         {8, 0, 0, 0, 1, 2, 0, 9, 0},
+//         {6, 1, 8, 9, 4, 0, 2, 0, 5},
+//         {7, 0, 4, 3, 5, 1, 9, 0, 8},
+//         {0, 3, 0, 0, 0, 0, 7, 0, 1}
+//     };
 
-    bool solve() {
-        for (int row = 0; row < size; ++row) {
-            for (int col = 0; col < size; ++col) {
-                if (board[row][col] == 0) {
-                    for (int num = 1; num <= size; ++num) {
-                        if (isValid(row, col, num)) {
-                            board[row][col] = num;
-                            if (solve()) {
-                                return true;
-                            }
-                            board[row][col] = 0;
-                        }
-                    }
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
+//     for (int i = 0; i < 9; ++i) {
+//         for (int j = 0; j < 9; ++j) {
+//             if (sudokuNumbers[i][j] != 0) {
+//                 board.setCell(i, j, sudokuNumbers[i][j], true);
+//             }
+//         }
+//     }
+// }
 
-public:
-    Sudoku() : board(size, std::vector<int>(size, 0)) {}
 
-    void generate() {
-        srand(time(nullptr));
+// // const int numInitialCells = 78;
 
-        // Step 1: Fill diagonal 3x3 grids with random numbers
-        for (int i = 0; i < size; i += 3) {
-            std::vector<int> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-            std::random_shuffle(nums.begin(), nums.end());
-            for (int j = 0; j < 3; ++j) {
-                for (int k = 0; k < 3; ++k) {
-                    board[i + j][i + k] = nums[j * 3 + k];
-                }
-            }
-        }
+// // void BoardGenerator::generateSudokuPuzzle(Board& board) {
+// //     bool usedInRow[9][10] = {false};
+// //     bool usedInCol[9][10] = {false};
+// //     bool usedInGrid[3][3][10] = {false};
 
-        // Step 2: Solve the Sudoku board
-        solve();
+// //     int numToPlace = 1;
 
-        // Step 3: Remove random numbers to make it easy
-        int emptyCells = size * size / 3; // Adjust for difficulty
-        while (emptyCells > 0) {
-            int row = rand() % size;
-            int col = rand() % size;
-            if (board[row][col] != 0) {
-                board[row][col] = 0;
-                --emptyCells;
-            }
-        }
-    }
+// //     for (int i = 0; i < numInitialCells; ++i) {
+// //         int row = i / 9;
+// //         int col = i % 9;
+// //         int gridRow = row / 3;
+// //         int gridCol = col / 3;
 
-    void print() {
-        for (int i = 0; i < size; ++i) {
-            for (int j = 0; j < size; ++j) {
-                std::cout << board[i][j] << " ";
-                if ((j + 1) % 3 == 0 && j != size - 1) {
-                    std::cout << "| ";
-                }
-            }
-            std::cout << std::endl;
-            if ((i + 1) % 3 == 0 && i != size - 1) {
-                std::cout << "------+-------+------" << std::endl;
-            }
-        }
-    }
-};
+// //         while (usedInRow[row][numToPlace] || usedInCol[col][numToPlace] || usedInGrid[gridRow][gridCol][numToPlace]) {
+// //             ++numToPlace;
+// //             if (numToPlace > 9)
+// //                 numToPlace = 1;
+// //         }
 
-int main() {
-    Sudoku sudoku;
-    sudoku.generate();
-    sudoku.print();
-    return 0;
-}
+// //         usedInRow[row][numToPlace] = true;
+// //         usedInCol[col][numToPlace] = true;
+// //         usedInGrid[gridRow][gridCol][numToPlace] = true;
+
+// //         board.setCell(row, col, numToPlace, true);
+
+// //         ++numToPlace;
+// //         if (numToPlace > 9)
+// //             numToPlace = 1;
+// //     }
+// // }
+
+
+// #include "board.h"
+// #include <iostream>
+// #include <vector>
+// #include <cstdlib>
+// #include <ctime>
+// #include <string>
+// #pragma once
+
+// class BoardGenerator {
+// public:
+//     enum Difficulty { EASY, MEDIUM, HARD };
+
+//     static void generateSudokuPuzzle(Board& board, Difficulty difficulty);
+// private:
+//     static void fillEasyPuzzle(Board& board);
+// };
+
+// void BoardGenerator::generateSudokuPuzzle(Board& board, Difficulty difficulty) {
+//     switch (difficulty) {
+//         case EASY:
+//             fillEasyPuzzle(board);
+//             break;
+//         case MEDIUM:
+//             // implementasi untuk tingkat kesulitan sedang
+//             break;
+//         case HARD:
+//             // implementasi untuk tingkat kesulitan sulit
+//             break;
+//         default:
+//             fillEasyPuzzle(board); // Jika kesulitan tidak valid, gunakan tingkat kesulitan mudah secara default
+//             break;
+//     }
+// }
+
+// void BoardGenerator::fillEasyPuzzle(Board& board) {
+//     int sudokuNumbers[9][9] = {
+//         {4, 0, 2, 0, 0, 0, 0, 0, 9},
+//         {0, 9, 6, 0, 0, 0, 0, 0, 0},
+//         {0, 0, 0, 0, 0, 0, 0, 1, 0},
+//         {0, 0, 7, 4, 7, 0, 0, 8, 3},
+//         {0, 6, 0, 0, 0, 0, 0, 0, 4},
+//         {8, 0, 0, 0, 1, 2, 0, 9, 0},
+//         {6, 1, 8, 9, 4, 0, 2, 0, 5},
+//         {7, 0, 4, 3, 5, 1, 9, 0, 8},
+//         {0, 3, 0, 0, 0, 0, 7, 0, 1}
+//     };
+
+//     for (int i = 0; i < 9; ++i) {
+//         for (int j = 0; j < 9; ++j) {
+//             if (sudokuNumbers[i][j] != 0) {
+//                 board.setCell(i, j, sudokuNumbers[i][j], true);
+//             }
+//         }
+//     }
+// }

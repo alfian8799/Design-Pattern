@@ -19,10 +19,12 @@ public:
     void printBoard() const;
     void play();
     bool checkWinCondition() const;
+    BoardGenerator::Difficulty getDifficultyFromInput() const;
 };
 
 GameManager::GameManager(const string& playerName) : player(playerName) {
-    boardGenerator.generateSudokuPuzzle(board); 
+    BoardGenerator::Difficulty difficulty = getDifficultyFromInput();
+    boardGenerator.generateSudokuPuzzle(board, difficulty); 
 }
 
 void GameManager::printBoard() const {
@@ -47,7 +49,7 @@ void GameManager::play() {
 
     while (true) {
         int row, col, value;
-        cout << "Masukkan kolom (1-9), baris (A-I), dan nilai (1-9) (mis., 1A3): ";
+        cout << "Masukkan kolom (1-9), baris (A-I), dan nilai (1-9) (mis., 1A3), atau ketik -1 untuk keluar: ";
         string input;
         cin >> input;
 
@@ -64,7 +66,7 @@ void GameManager::play() {
         value = input[2] - '0';
 
         if (col < 0 || col >= 9 || row < 0 || row >= 9 || value < 1 || value > 9) {
-            cout << "Input tidak valid. Harap masukkan baris (A-I), kolom (1-9), dan nilai (1-9) dalam rentang yang ditentukan." << std::endl;
+            cout << "Input tidak valid. Harap masukkan baris (A-I), kolom (1-9), dan nilai (1-9) dalam rentang yang ditentukan." << endl;
             continue;
         }
 
@@ -83,3 +85,21 @@ void GameManager::play() {
         }
     }
 }
+
+BoardGenerator::Difficulty GameManager::getDifficultyFromInput() const {
+    cout << "Pilih tingkat kesulitan:" << endl;
+    cout << " Mudah" << endl;
+
+
+    int choice;
+    cin >> choice;
+
+    switch (choice) {
+        case 1:
+            return BoardGenerator::Difficulty::EASY;
+        default:
+            cout << "Pilihan tidak valid, menggunakan tingkat kesulitan mudah secara default." << endl;
+            return BoardGenerator::Difficulty::EASY;
+    }
+}
+
