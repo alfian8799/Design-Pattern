@@ -88,7 +88,7 @@ void GameManager::play() {
 
 BoardGenerator::Difficulty GameManager::getDifficultyFromInput() const {
     cout << "Pilih tingkat kesulitan:" << endl;
-    cout << " Mudah" << endl;
+    cout << "1. Mudah" << endl;
 
 
     int choice;
