@@ -4,7 +4,7 @@
 #include <ctime>
 #include <string>
 #include "board.h"
-#include "player.cpp"
+#include "player.h"
 #include "boardGenerator.h" 
 
 using namespace std;
