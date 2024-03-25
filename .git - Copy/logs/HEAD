@@ -1,0 +1,15 @@
+0000000000000000000000000000000000000000 7b28327c466477a18283ceae9dace48d5564db35 alfian8799 <unravel8799@gmail.com> 1709472163 +0700	clone: from https://github.com/alfian8799/Design-Pattern.git
+7b28327c466477a18283ceae9dace48d5564db35 a4e69a461bd57e7ffa6431130d460e25de699c2a alfian8799 <unravel8799@gmail.com> 1709472249 +0700	commit: game sudoku
+a4e69a461bd57e7ffa6431130d460e25de699c2a b6619937084c32b7d8d75ce8eab2dfcbc730c522 alfian8799 <unravel8799@gmail.com> 1710403412 +0700	commit: pemisahan folder
+b6619937084c32b7d8d75ce8eab2dfcbc730c522 4c1d911b529ff3f134ffa5c2cf6278660af9f8bc alfian8799 <unravel8799@gmail.com> 1710403760 +0700	commit: again
+4c1d911b529ff3f134ffa5c2cf6278660af9f8bc 4ebc0cf8e5d2f9890a82ef90cc0495a7c7b67769 alfian8799 <unravel8799@gmail.com> 1710422349 +0700	commit: penambahan folder
+4ebc0cf8e5d2f9890a82ef90cc0495a7c7b67769 0d62670fb056e6c3e71bef6eec57d5593ebc6d17 alfian8799 <unravel8799@gmail.com> 1710506889 +0700	commit: perbaikan
+0d62670fb056e6c3e71bef6eec57d5593ebc6d17 bfc47284661f781935e76e745c03d6415e2981f2 alfian8799 <unravel8799@gmail.com> 1710601254 +0700	commit: perbaikan
+bfc47284661f781935e76e745c03d6415e2981f2 e830ca6c5c8e73eb5bec866cfa613b4b457a5fae alfian8799 <unravel8799@gmail.com> 1710669505 +0700	commit: perbaikan code
+e830ca6c5c8e73eb5bec866cfa613b4b457a5fae 8d75a194c768dd9ab451245dfcfba673ad0c10d1 alfian8799 <unravel8799@gmail.com> 1710854644 +0700	commit: berupahan code
+8d75a194c768dd9ab451245dfcfba673ad0c10d1 dc10816b967922f2cb1630c0d054ecc725a90133 alfian8799 <unravel8799@gmail.com> 1710941676 +0700	commit: penambahan fitur kesulitan
+dc10816b967922f2cb1630c0d054ecc725a90133 1204ef497d07c1a23edade37e07601d61583fc36 alfian8799 <unravel8799@gmail.com> 1710948137 +0700	commit: pembaruan
+1204ef497d07c1a23edade37e07601d61583fc36 7dc88c32a893662552fc6679637b1db7855f09d7 alfian8799 <unravel8799@gmail.com> 1711326229 +0700	commit: memperbarui code
+7dc88c32a893662552fc6679637b1db7855f09d7 6fb175cc27b0321d5fe941ec22eb1c31d2bb5cf5 alfian8799 <unravel8799@gmail.com> 1711368744 +0700	pull --ff --recurse-submodules --progress origin: Fast-forward
+6fb175cc27b0321d5fe941ec22eb1c31d2bb5cf5 8e4da6923b14ba83223018f85d591d377e555cf3 alfian8799 <unravel8799@gmail.com> 1711368753 +0700	checkout: moving from main to v
+8e4da6923b14ba83223018f85d591d377e555cf3 6fb175cc27b0321d5fe941ec22eb1c31d2bb5cf5 alfian8799 <unravel8799@gmail.com> 1711368806 +0700	checkout: moving from v to main
