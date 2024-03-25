@@ -16,7 +16,7 @@ public:
 
     void setCell(int row, int col, int value, bool isFixed = false);
     int getCell(int row, int col) const;
-    bool isCellFixed(int row, int col) const;
+    bool cellFixed(int row, int col) const;
     void printBoard() const;
 };
 
@@ -34,7 +34,7 @@ int Board::getCell(int row, int col) const {
     return cells[row][col];
 }
 
-bool Board::isCellFixed(int row, int col) const {
+bool Board::cellFixed(int row, int col) const {
     return fixed[row][col];
 }
 
@@ -52,7 +52,7 @@ void Board::printBoard() const {
             if (j % 3 == 0 && j != 0) {
                 cout << "| ";
             }
-            if (isCellFixed(i, j)) {
+            if (cellFixed(i, j)) {
                 cout << "\033[1;31m" << cells[i][j] << "\033[0m ";
             } else {
                 cout << cells[i][j] << " ";

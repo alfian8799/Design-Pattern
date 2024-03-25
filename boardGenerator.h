@@ -12,18 +12,18 @@ public:
 
     static void generateSudokuPuzzle(Board& board, Difficulty difficulty);
 private:
-    static void fillEasyPuzzle(Board& board);
+    static void easyPuzzle(Board& board);
 };
 
 void BoardGenerator::generateSudokuPuzzle(Board& board, Difficulty difficulty) {
     switch (difficulty) {
         case EASY:
-            fillEasyPuzzle(board);
+            easyPuzzle(board);
             break;
     }
 }
 
-void BoardGenerator::fillEasyPuzzle(Board& board) {
+void BoardGenerator::easyPuzzle(Board& board) {
     int sudokuNumbers[9][9] = {
         {4, 0, 2, 0, 0, 0, 0, 0, 9},
         {0, 9, 6, 0, 0, 0, 0, 0, 0},

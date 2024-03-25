@@ -13,7 +13,7 @@ int main() {
     cout << "Masukkan nama Anda: ";
     cin >> playerName;
 
-    GameManager game(playerName); // Mulai permainan
+    GameManager game(playerName);
     game.play();
 
 

@@ -18,12 +18,12 @@ public:
     GameManager(const string& playerName);
     void printBoard() const;
     void play();
-    bool checkWinCondition() const;
-    BoardGenerator::Difficulty getDifficultyFromInput() const;
+    bool checkWin() const;
+    BoardGenerator::Difficulty getDifficulty() const;
 };
 
 GameManager::GameManager(const string& playerName) : player(playerName) {
-    BoardGenerator::Difficulty difficulty = getDifficultyFromInput();
+    BoardGenerator::Difficulty difficulty = getDifficulty();
     boardGenerator.generateSudokuPuzzle(board, difficulty); 
 }
 
@@ -32,15 +32,15 @@ void GameManager::printBoard() const {
     board.printBoard();
 }
 
-bool GameManager::checkWinCondition() const {
+bool GameManager::checkWin() const {
     for (int i = 0; i < 9; ++i) {
         for (int j = 0; j < 9; ++j) {
             if (board.getCell(i, j) == 0) {
-                return false; // Ada sel kosong, permainan belum selesai
+                return false; 
             }
         }
     }
-    return true; // Semua sel terisi, permainan selesai
+    return true; 
 }
 
 void GameManager::play() {
@@ -70,7 +70,7 @@ void GameManager::play() {
             continue;
         }
 
-        if (board.isCellFixed(row, col)) {
+        if (board.cellFixed(row, col)) {
             cout << "Sel ini tetap dan tidak dapat diubah." << endl;
             continue;
         }
@@ -79,14 +79,14 @@ void GameManager::play() {
 
         printBoard();
 
-        if (checkWinCondition()) {
+        if (checkWin()) {
             cout << "Selamat! Anda telah menyelesaikan permainan Sudoku." << endl;
             break;
         }
     }
 }
 
-BoardGenerator::Difficulty GameManager::getDifficultyFromInput() const {
+BoardGenerator::Difficulty GameManager::getDifficulty() const {
     cout << "Pilih tingkat kesulitan:" << endl;
     cout << "1. Mudah" << endl;
 
