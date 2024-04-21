@@ -28,11 +28,14 @@ bool GameManager::checkWin() const {
 }
 
 void GameManager::play() {
+    cout << "----------------------------------" << endl;
     cout << "Selamat datang, " << player.getName() << "!" << endl;
     printBoard();
 
     while (true) {
         int row, col, value;
+        cout << "Undo : Langsung Ganti angkanya" << endl;
+        cout << "----------------------------------" << endl;
         cout << "Masukkan kolom (1-9), baris (A-I), dan nilai (1-9) (mis., 1A3), atau ketik -1 untuk keluar: ";
         string input;
         cin >> input;
