@@ -9,7 +9,7 @@ using namespace std;
 
 int main() {
     string playerName;
-    cout << "Game Sudoku " << "\n";
+    cout << " Game Sudoku " << "\n";
     cout << "Masukkan nama Anda: ";
     cin >> playerName;
 
